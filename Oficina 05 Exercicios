@@ -1,0 +1,33 @@
+Exercicio 1
+
+public class TesteJogador {
+    public static void main(String[] args) {
+        Jogador jogador1 = new Jogador("Thiago");
+        Jogador jogador2 = new Jogador("Fernando");
+        
+        System.out.println("Nome do jogador 1: " + jogador1.getNome());
+        System.out.println("Tentativas do jogador 1: " + jogador1.getTentativas());
+        System.out.println("Pontuação do jogador 1: " + jogador1.getPontuacao());
+        
+        System.out.println("Nome do jogador 2: " + jogador2.getNome());
+        System.out.println("Tentativas do jogador 2: " + jogador2.getTentativas());
+        System.out.println("Pontuação do jogador 2: " + jogador2.getPontuacao());
+        
+        jogador1.incrementarTentativas();
+        jogador1.incrementarTentativas();
+        jogador1.atualizarPontuacao(10);
+        
+        jogador2.setTentativas(3);
+        jogador2.setPontuacao(15);
+        
+        System.out.println("\nApós atualizações:");
+        System.out.println("Tentativas do jogador 1: " + jogador1.getTentativas());
+        System.out.println("Pontuação do jogador 1: " + jogador1.getPontuacao());
+        
+        System.out.println("Tentativas do jogador 2: " + jogador2.getTentativas());
+        System.out.println("Pontuação do jogador 2: " + jogador2.getPontuacao());
+        
+        jogador2.setNome("Thiago Fernando");
+        System.out.println("Novo nome do jogador 2: " + jogador2.getNome());
+    }
+}
