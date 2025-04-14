@@ -1,7 +1,7 @@
 Exercicio 1
 
 public class TesteJogador {
-    public static void main(String[] args) {
+ {
         Jogador jogador1 = new Jogador("Thiago");
         Jogador jogador2 = new Jogador("Fernando");
         
@@ -31,3 +31,190 @@ public class TesteJogador {
         System.out.println("Novo nome do jogador 2: " + jogador2.getNome());
     }
 }
+
+
+Exercicio 2
+
+public class TestePlacar {
+        Jogador jogador1 = new Jogador("Thiago");
+        Jogador jogador2 = new Jogador("Carlos");
+        Jogador jogador3 = new Jogador("Maria");
+        
+        jogador1.incrementarTentativas();
+        jogador1.incrementarTentativas();
+        jogador1.atualizarPontuacao(150);
+        
+        jogador2.incrementarTentativas();
+        jogador2.incrementarTentativas();
+        jogador2.incrementarTentativas();
+        jogador2.atualizarPontuacao(200);
+        
+        jogador3.incrementarTentativas();
+        jogador3.atualizarPontuacao(100);
+        
+        Placar placar = new Placar();
+        
+        placar.adicionarJogador(jogador1);
+        placar.adicionarJogador(jogador2);
+        placar.adicionarJogador(jogador3);
+        
+        placar.mostrarRanking();
+        
+        System.out.println("\nApos atualização da pontuação do Thiago");
+        jogador3.atualizarPontuacao(150);  
+        placar.mostrarRanking();
+    }
+
+
+Exercicio 3
+
+implementando classe jogo
+
+import java.util.Random;
+
+public class Jogo {
+    private Jogador jogador;
+    private int numeroSecreto;
+    
+    public Jogo(Jogador jogador) {
+        this.jogador = jogador;
+        Random random = new Random();
+        this.numeroSecreto = random.nextInt(100) + 1; 
+    }
+    
+    public String jogar(int tentativa) {
+        jogador.incrementarTentativas();
+        
+        if (tentativa < numeroSecreto) {
+            return "menor";
+        } else if (tentativa > numeroSecreto) {
+            return "maior";
+        } else {
+            int pontuacao = 100 - (jogador.getTentativas() * 10);
+            if (pontuacao < 0) {
+                pontuacao = 0;
+            }
+            jogador.atualizarPontuacao(pontuacao);
+            return "acertou";
+        }
+    }
+    public int getNumeroSecreto() {
+        return numeroSecreto;
+    }
+}
+
+simulando rodada
+
+import java.util.Scanner;
+
+public class JogoSimulacao {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        Placar placar = new Placar();
+        
+        System.out.println("JOGO DE ADIVINHAÇAO");
+        System.out.print("Digite seu nome ");
+        String nomeJogador = scanner.nextLine();
+        
+        Jogador jogador = new Jogador(nomeJogador);
+        
+        placar.adicionarJogador(jogador);
+        
+        Jogo jogo = new Jogo(jogador);
+        
+        boolean acertou = false;
+        
+        System.out.println("\nBem-vindo, " + jogador.getNome() + "!");
+        System.out.println("Tente adivinhar o número secreto entre 1 e 100");
+        
+        while (!acertou) {
+            System.out.print("\nDigite sua tentativa: ");
+            int tentativa = scanner.nextInt();
+            
+            String resultado = jogo.jogar(tentativa);
+            
+            if (resultado.equals("menor")) {
+                System.out.println("O número que você digitou é MENOR que o numero secreto");
+                System.out.println("Tentativas: " + jogador.getTentativas());
+            } else if (resultado.equals("maior")) {
+                System.out.println("O número que você digitou é MAIOR que o nUmero secreto");
+                System.out.println("Tentativas: " + jogador.getTentativas());
+            } else {
+                acertou = true;
+                System.out.println("\n Você acertou o número secreto: " + jogo.getNumeroSecreto());
+                System.out.println("Número de tentativa " + jogador.getTentativas());
+                System.out.println("Pontuação  " + jogador.getPontuacao());
+            }
+        }
+        
+        placar.mostrarRanking();
+        
+        scanner.close();
+    }
+}
+
+Exercicio 4
+
+import java.util.Scanner;
+
+public class JogoCompleto {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        Placar placar = new Placar();
+        
+        boolean continuarJogo = true;
+        
+        System.out.println("JOGO DE ADIVINHAÇÃO ");
+        
+        while (continuarJogo) {
+            System.out.print("\nDigite seu nome: ");
+            String nomeJogador = scanner.nextLine();
+            
+            Jogador jogador = new Jogador(nomeJogador);
+            
+            placar.adicionarJogador(jogador);
+            
+            Jogo jogo = new Jogo(jogador);
+            
+            System.out.println("\nBem-vindo, " + jogador.getNome() + "!");
+            System.out.println("Tente adivinhar o número secreto entre 1 e 100");
+            
+            boolean acertou = false;
+            
+            while (!acertou) {
+                System.out.print("\nDigite sua tentativa: ");
+                int tentativa = scanner.nextInt();
+                scanner.nextLine(); 
+                
+                String resultado = jogo.jogar(tentativa);
+                
+                if (resultado.equals("menor")) {
+                    System.out.println("O número que você digitou é MENOR que o número secreto.");
+                    System.out.println("Tentativas: " + jogador.getTentativas());
+                } else if (resultado.equals("maior")) {
+                    System.out.println("O número que você digitou é MAIOR que o número secreto.");
+                    System.out.println("Tentativas: " + jogador.getTentativas());
+                } else {
+                    acertou = true;
+                    System.out.println("\nPARABÉNS Você acertou o número secreto: " + jogo.getNumeroSecreto());
+                    System.out.println("Número de tentativas: " + jogador.getTentativas());
+                    System.out.println("Pontuação obtida: " + jogador.getPontuacao());
+                }
+            }
+            
+            placar.mostrarRanking();
+            
+            System.out.print("\nDeseja jogar novamente com outro jogador? (S/N): ");
+            String resposta = scanner.nextLine().toUpperCase();
+            continuarJogo = resposta.equals("S");
+        }
+        
+        System.out.println("\nObrigado por jogar! Placar final:");
+        placar.mostrarRanking();
+        
+        scanner.close();
+    }
+}
+
