@@ -1,0 +1,204 @@
+import java.util.Scanner;
+
+/**Essa é a classe principal que inicia o jogo de advinhaçao*/
+
+public class Main {
+
+    /**
+      Métodoque executa o jogo de adivinhaçao
+     */
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        Placar placar = new Placar();
+
+        System.out.print("Digitar seu nome: ");
+        String nome = teclado.nextLine();
+
+        Jogador jogador = new Jogador(nome);
+        Jogo jogo = new Jogo(jogador);
+
+        System.out.println("\nJogo começou, adivinhe o numero entre 1 a 100");
+        boolean acertou = false;
+
+        while (!acertou) {
+            System.out.print("Digite um numero: ");
+            int tentativa = teclado.nextInt();
+            String resultado = jogo.jogar(tentativa);
+            System.out.println(resultado);
+            if (resultado.contains("Acertou")) {
+                acertou = true;
+            }
+        }
+
+        System.out.println("\nJogo finalizado");
+        System.out.println("Tentativa: " + jogador.getTentativas());
+        System.out.println("Pontuacao: " + jogador.getPontuacao());
+
+        placar.adicionarJogador(jogador);
+        placar.mostrarRanking();
+
+        teclado.close();
+    }
+}
+
+
+
+
+
+
+
+
+import java.util.Random;
+
+/**Classe que representa a lógica do jogo alem de gerar
+ um número secreto aleatório entre 1 e 100
+ */
+public class Jogo {
+    private Jogador jogador;
+    private int numeroSecreto;
+
+    /**
+      Construtor da classe Jogo.
+     Inicializa o jogador e gera o numero secreto entre 1 e 100.*/
+    public Jogo(Jogador jogador) {
+        this.jogador = jogador;
+        Random rand = new Random();
+        this.numeroSecreto = rand.nextInt(100) + 1; 
+    }
+
+    /**
+      Método que processa uma tentativa do jogador.
+      Informa se o numero secreto é maior ou menor ou se o jogador acertou
+     
+     */
+    public String jogar(int tentativa) {
+        jogador.incrementarTentativas();
+
+        if (tentativa < numeroSecreto) {
+            return " O número secreto é maior";
+        } else if (tentativa > numeroSecreto) {
+            return " O número é menor";
+        } else {
+            jogador.atualizarPontuacao(); 
+            return " Acertou, parabens";
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+/** Classe que representa um jogador no jogo,
+  Armazena o nome, as tentativas e pontuação do jogador
+ */
+public class Jogador {
+    private String nome;
+    private int tentativas;
+    private int pontuacao;
+
+    /**
+      Construtor da classe Jogador
+     Inicializa o nome do jogador e define tentativas como zero.
+     
+     
+     */
+    public Jogador(String nome) {
+        this.nome = nome;
+        this.tentativas = 0;
+        this.pontuacao = 0;
+    }
+
+    /**
+      Retorna o nome do jogador
+
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+    Retorna o número de tentativas
+    
+     */
+    public int getTentativas() {
+        return tentativas;
+    }
+
+    /**
+     Retorna a pontuação atual do jogador
+    
+     */
+    public int getPontuacao() {
+        return pontuacao;
+    }
+
+    /**
+     Incrementa em 1 o número de tentativas do jogador
+     */
+    public void incrementarTentativas() {
+        tentativas++;
+    }
+
+    /**
+     *Atualiza a pontuação do jogador com base na tentativas
+      A pontuação começa em 100 e diminui 10 pontos por tentativa
+   
+     */
+    public void atualizarPontuacao() {
+        pontuacao = Math.max(0, 100 - (tentativas * 10));
+    }
+}
+
+
+
+
+
+
+
+
+import java.util.ArrayList;
+
+/**
+  Classe que representa o placar do jogo
+  Armazena e exibe o ranking de jogadores 
+ */
+public class Placar {
+    private ArrayList<Jogador> ranking;
+
+    /**
+      Construtor da classe Placar
+     inicializa a lista de jogadores do ranking.
+     */
+    public Placar() {
+        ranking = new ArrayList<>();
+    }
+
+    /**
+     Adiciona um jogador ao ranking.
+     
+     
+     */
+    public void adicionarJogador(Jogador jogador) {
+        ranking.add(jogador);
+    }
+
+    /**
+     Exibe o ranking de jogadores e suas pontuações
+     */
+    public void mostrarRanking() {
+        System.out.println("\n ranking dos jogadores :");
+        for (Jogador j : ranking) {
+            System.out.println(j.getNome() + "  Pontuação: " + j.getPontuacao());
+        }
+    }
+}
+
+
+
+
+
