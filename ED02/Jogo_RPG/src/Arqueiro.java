@@ -1,15 +1,14 @@
 import java.util.Random;
 
 /**
- * Classe que um arqueiro com ataques à distância.
+ Classe que um arqueiro com ataques a distância
  */
 public class Arqueiro extends Personagem {
     private Random rand = new Random();
 
     /**
-     * Construtor do Arqueiro.
-     *
-     * @param nome Nome do arqueiro.
+    Construtor do Arqueiro.
+    
      */
     public Arqueiro(String nome) {
         super(nome, 120, 25);
@@ -17,13 +16,12 @@ public class Arqueiro extends Personagem {
 
     /**
      * Ataca com chance de acertar crítico.
-     *
-     * @param inimigo Inimigo a ser atacado.
+     
      */
-    @Override
+   
     public void atacar(Personagem inimigo) {
         int dano = ataqueBase;
-        boolean critico = rand.nextInt(100) < 20; // 20% de chance
+        boolean critico = rand.nextInt(100) < 20; 
 
         if (critico) {
             dano *= 2;
@@ -35,7 +33,7 @@ public class Arqueiro extends Personagem {
     }
 
     /**
-     * Usa a habilidade "Chuva de Flechas", realizando 3 ataques consecutivos.
+      Usa a habilidade Chuva de Flechas realizando 3 ataques consecutivos
      */
     @Override
     public void usarHabilidadeEspecial() {
