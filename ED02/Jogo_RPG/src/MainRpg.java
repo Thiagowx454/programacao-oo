@@ -1,5 +1,5 @@
 /**
- * Classe que executa o jogo de RPG.
+  Classe que executa o jogo
  */
 public class MainRpg {
     public static void main(String[] args) {
