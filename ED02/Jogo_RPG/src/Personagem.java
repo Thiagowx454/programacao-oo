@@ -1,5 +1,5 @@
 /**
- * Classe que representa um personagem em um jogo de RPG.
+  Classe que representa um personagem em um jogo de RPG.
  */
 public abstract class Personagem {
      protected String nome;
@@ -7,11 +7,8 @@ public abstract class Personagem {
      protected int ataqueBase;
 
     /**
-     * Construtor da classe Personagem.
-     *
-     * @param nome       Nome do personagem.
-     * @param hp         Pontos de vida (HP).
-     * @param ataqueBase Poder de ataque base.
+      Construtor da classe Personagem
+    
      */
     public Personagem(String nome, int hp, int ataqueBase) {
         this.nome = nome;
@@ -20,16 +17,14 @@ public abstract class Personagem {
     }
 
     /**
-     * Exibe o status atual do personagem.
+      Exibe o status atual do personagem.
      */
     public void status() {
         System.out.println(nome + " - HP: " + hp);
     }
 
     /**
-     * Ataca um inimigo, causando dano no ataque base.
-     *
-     * @param inimigo O personagem inimigo a ser atacado.
+      Ataca um inimigo, causando dano no ataque base.
      */
     public void atacar(Personagem inimigo) {
         System.out.println(nome + " ataca " + inimigo.nome + " com " + ataqueBase + " de dano.");
@@ -37,9 +32,8 @@ public abstract class Personagem {
     }
 
     /**
-     * Defende um ataque, reduzindo o HP de acordo com o dano recebido.
-     *
-     * @param dano Valor de dano recebido.
+     * Defende um ataque, reduzindo o HP de acordo com o dano recebido
+   
      */
     public void defender(int dano) {
         hp -= dano;
@@ -48,7 +42,7 @@ public abstract class Personagem {
     }
 
     /**
-     * Usa a habilidade especial única .
+     Usa a habilidade especial unica
      */
     public abstract void usarHabilidadeEspecial();
 }
