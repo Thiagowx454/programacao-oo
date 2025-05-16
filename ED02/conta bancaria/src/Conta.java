@@ -1,3 +1,7 @@
+//** Classe apresentado a conta do usuário
+//    
+
+
 public class Conta {
     protected String cliente;
     protected double saldo;
@@ -30,7 +34,7 @@ public class Conta {
         return saldo;
     }
     public void aplicarJurosDiarios() {
-        // A ser sobrescrito nas subclasses
+        //** A ser sobrescrito nas subclasses
     }
 
     public void imprimirExtrato() {
