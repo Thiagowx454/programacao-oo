@@ -1,3 +1,6 @@
+//** classe criando a conta poupança 
+//
+
 public class ContaPoupanca extends Conta {
 
     public ContaPoupanca(String cliente, double saldoInicial) {
@@ -6,7 +9,7 @@ public class ContaPoupanca extends Conta {
 
     @Override
     public void aplicarJurosDiarios() {
-        saldo *= 1.0008; // 0.08% ao dia
+        saldo *= 1.0008; //** 0.08% ao dia
     }
 
     @Override
