@@ -1,23 +1,20 @@
 /**
- * Classe que representa um guerreiro com alta defesa.
+  Classe que representa um guerreiro
  */
 public class Guerreiro extends Personagem {
 
     /**
-     * Construtor do Guerreiro.
-     *
-     * @param nome Nome do guerreiro.
+     Construtor do Guerreiro
+   
      */
     public Guerreiro(String nome) {
         super(nome, 150, 30);
     }
 
     /**
-     * Defesa especial que reduz o dano pela metade.
-     *
-     * @param dano Dano recebido.
+     * Defesa especial que reduz o dano pela metade. 
      */
-    @Override
+  
     public void defender(int dano) {
         int danoReduzido = dano / 2;
         hp -= danoReduzido;
@@ -26,9 +23,9 @@ public class Guerreiro extends Personagem {
     }
 
     /**
-     * Usa a habilidade "Golpe Duplo", causando o dobro do ataque.
+      Usa a habilidade Golpe Duplo causando o dobro do ataque
      */
-    @Override
+
     public void usarHabilidadeEspecial() {
         int dano = ataqueBase * 2;
         System.out.println(nome + " usa Golpe Duplo! Dano: " + dano);
