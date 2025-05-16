@@ -1,3 +1,5 @@
+//** clase criando a conta corrente do usuário 
+//
 public class ContaCorrente extends Conta {
 
     public ContaCorrente(String cliente, double saldoInicial) {
@@ -5,7 +7,8 @@ public class ContaCorrente extends Conta {
     }
     @Override
     public void aplicarJurosDiarios() {
-        saldo *= 1.001; // 0.1% ao dia
+        saldo *= 1.001; //** 0.1% ao dia
+//
     }
 
     @Override
