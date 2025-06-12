@@ -1,17 +1,14 @@
 package model;
 
 /**
- * Classe que representa um contato do tipo Pessoa Física.
+  Classe que representa um contato do tipo Pessoa Física.
  */
 public class PessoaFisica extends ContatoBase {
     private String cpf;
 
     /**
-     * Construtor da classe PessoaFisica.
-     * @param nome O nome da pessoa física.
-     * @param telefone O telefone da pessoa física.
-     * @param email O email da pessoa física.
-     * @param cpf O CPF da pessoa física.
+      Construtor da classe PessoaFisica.
+
      */
     public PessoaFisica(String nome, String telefone, String email, String cpf) {
         super(nome, telefone, email);
@@ -20,7 +17,6 @@ public class PessoaFisica extends ContatoBase {
 
     /**
      * Retorna o CPF da pessoa física.
-     * @return O CPF da pessoa física.
      */
     public String getCpf() {
         return cpf;
@@ -28,7 +24,7 @@ public class PessoaFisica extends ContatoBase {
 
     /**
      * Define o CPF da pessoa física.
-     * @param cpf O CPF a ser definido.
+
      */
     public void setCpf(String cpf) {
         this.cpf = cpf;
