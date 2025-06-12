@@ -2,7 +2,7 @@ package model;
 
 /**
  * Classe abstrata que contém os atributos comuns a todos os tipos de contatos
- * e implementa a interface Contato.
+  e implementa a interface Contato
  */
 public abstract class ContatoBase implements Contato {
     private String nome;
@@ -11,9 +11,7 @@ public abstract class ContatoBase implements Contato {
 
     /**
      * Construtor da classe ContatoBase.
-     * @param nome O nome do contato.
-     * @param telefone O telefone do contato.
-     * @param email O email do contato.
+  
      */
     public ContatoBase(String nome, String telefone, String email) {
         this.nome = nome;
@@ -52,8 +50,8 @@ public abstract class ContatoBase implements Contato {
     }
 
     /**
-     * Método abstrato para exibir informações específicas de cada tipo de contato.
-     * @return Uma string com as informações específicas do contato.
+      metodo abstrato para exibir informações específicas de cada tipo de contato.
+  
      */
     public abstract String exibirInformacoes();
 }
