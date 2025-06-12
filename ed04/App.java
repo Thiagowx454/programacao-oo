@@ -6,7 +6,7 @@ import model.PessoaJuridica;
 import view.ContatoView;
 
 /**
- * Classe principal que inicia a aplicação da Agenda de Contatos.
+  Classe principal que inicia a aplicação da Agenda 
  */
 public class App {
     public static void main(String[] args) {
