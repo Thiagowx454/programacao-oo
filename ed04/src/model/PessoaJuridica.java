@@ -7,11 +7,7 @@ public class PessoaJuridica extends ContatoBase {
     private String cnpj;
 
     /**
-     * Construtor da classe PessoaJuridica.
-     * @param nome O nome da pessoa jurídica.
-     * @param telefone O telefone da pessoa jurídica.
-     * @param email O email da pessoa jurídica.
-     * @param cnpj O CNPJ da pessoa jurídica.
+      Construtor da classe PessoaJuridica.
      */
     public PessoaJuridica(String nome, String telefone, String email, String cnpj) {
         super(nome, telefone, email);
@@ -19,16 +15,16 @@ public class PessoaJuridica extends ContatoBase {
     }
 
     /**
-     * Retorna o CNPJ da pessoa jurídica.
-     * @return O CNPJ da pessoa jurídica.
+     Retorna o CNPJ da pessoa jurídica
+
      */
     public String getCnpj() {
         return cnpj;
     }
 
     /**
-     * Define o CNPJ da pessoa jurídica.
-     * @param cnpj O CNPJ a ser definido.
+      Define o CNPJ da pessoa jurídica.
+
      */
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
